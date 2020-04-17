@@ -1,4 +1,5 @@
 # Role settings
+bitwardenrs_configure: yes
 bitwardenrs_systemd: yes
 
 # Installation settings

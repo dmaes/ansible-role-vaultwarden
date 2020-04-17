@@ -16,6 +16,7 @@ Also, not all configuration can be done via role variables yet.
 ## Role Variables
 ```yaml
 # Role settings
+bitwardenrs_configure: yes
 bitwardenrs_systemd: yes
 
 # Installation settings
@@ -44,7 +45,7 @@ bitwardenrs_smtp_password: ''
 - hosts: servers
   roles:
       - role: dmaes.bitwardenrs
-        bitwardenrs_signup: no
+        bitwardenrs_configure: no
 ```
 
 ## License
