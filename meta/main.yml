@@ -1,0 +1,21 @@
+galaxy_info:
+  author: dmaes
+  role_name: bitwardenrs
+  description: Builds, installs and configures Bitwarden_RS (https://github.com/dani-garcia/bitwarden_rs) (without Docker)
+
+  license: GPL-3.0-only
+
+  min_ansible_version: 2.9
+
+  platforms:
+    - name: Debian
+      versions:
+        - buster
+
+  galaxy_tags:
+    - password
+    - security
+    - bitwardenrs
+
+dependencies: []
+  

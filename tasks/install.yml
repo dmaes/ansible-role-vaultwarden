@@ -1,0 +1,47 @@
+- name: Get rustup installer
+  get_url:
+    url: https://sh.rustup.rs
+    dest: /tmp/rustup.sh
+
+- name: Install rust nightly
+  command:
+    cmd: sh /tmp/rustup.sh --no-modify-path --default-toolchain nightly -y
+    creates: ~/.cargo/
+
+- name: Install required build-packages
+  package:
+    name: "{{ _bitwardenrs_build_packages }}"
+    state: present
+
+- name: Download bitwarden_rs repo
+  unarchive:
+    src: "https://github.com/dani-garcia/bitwarden_rs/archive/{{ bitwardenrs_version}}.tar.gz"
+    dest: "{{ bitwardenrs_directory }}"
+    creates: "{{ bitwardenrs_directory }}/bitwarden_rs-{{ bitwardenrs_version }}"
+    remote_src: yes
+
+- name: Compile bitwarden_rs
+  command:
+    cmd: ~/.cargo/bin/cargo build --features sqlite --release
+    chdir: "{{ bitwardenrs_directory }}/bitwarden_rs-{{ bitwardenrs_version}}"
+    creates: "{{ bitwardenrs_directory }}/bitwarden_rs-{{ bitwardenrs_version }}/target/release/bitwarden_rs"
+
+- name: Copy bitwarden_rs executable
+  copy:
+    src: "{{ bitwardenrs_directory }}/bitwarden_rs-{{ bitwardenrs_version }}/target/release/bitwarden_rs"
+    dest: "{{ bitwardenrs_directory }}/bitwarden_rs"
+    remote_src: yes
+    mode: preserve
+
+- name: Copy env template
+  copy:
+    src: "{{ bitwardenrs_directory }}/bitwarden_rs-{{ bitwardenrs_version }}/.env.template"
+    dest: "{{ bitwardenrs_directory }}/env.tmp"
+    remote_src: yes
+    mode: preserve
+
+- name: Download patched bitwarden webvault
+  unarchive:
+    src: https://github.com/dani-garcia/bw_web_builds/releases/download/v{{ bitwardenrs_webvault_version }}/bw_web_v{{ bitwardenrs_webvault_version }}.tar.gz
+    dest: "{{ bitwardenrs_directory }}"
+    remote_src: yes

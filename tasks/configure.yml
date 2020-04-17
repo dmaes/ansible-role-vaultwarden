@@ -1,0 +1,71 @@
+- name: Set domain
+  lineinfile:
+    path: "{{ bitwardenrs_directory }}/env.tmp"
+    line: "DOMAIN={{ bitwardenrs_domain }}"
+    regexp: '^DOMAIN='
+    insertafter: '^# DOMAIN='
+
+- name: Set logging settings
+  lineinfile:
+    path: "{{ bitwardenrs_directory }}/env.tmp"
+    line: "{{ item.key }}={{ item.value }}"
+    regexp: "^{{ item.key }}="
+    insertafter: "^# {{ item.key }}="
+  with_items: "{{ _bitwardenrs_logging_settings }}"
+
+- name: Set port
+  lineinfile:
+    path: "{{ bitwardenrs_directory }}/env.tmp"
+    line: "ROCKET_PORT={{ bitwardenrs_port }}"
+    regexp: '^ROCKET_PORT='
+    insertafter: '^# ROCKET_PORT='
+
+- name: Set signup settings
+  lineinfile:
+    path: "{{ bitwardenrs_directory }}/env.tmp"
+    line: "{{ item.key }}={{ item.value }}"
+    regexp: "^{{ item.key }}="
+    insertafter: "^# {{ item.key }}="
+  with_items: "{{ _bitwardenrs_signup_settings }}"
+
+- name: Set admin settings
+  lineinfile:
+    path: "{{ bitwardenrs_directory }}/env.tmp"
+    line: "{{ item.key }}={{ item.value }}"
+    regexp: "^{{ item.key }}="
+    insertafter: "^# {{ item.key }}="
+  with_items: "{{ _bitwardenrs_admin_settings }}"
+
+- name: Set smtp settings
+  lineinfile:
+    path: "{{ bitwardenrs_directory }}/env.tmp"
+    line: "{{ item.key }}={{ item.value }}"
+    regexp: "^{{ item.key }}="
+    insertafter: "^# {{ item.key }}="
+  with_items: "{{ _bitwardenrs_smtp_settings }}"
+  when: bitwardenrs_smtp
+
+- name: Copy final config
+  copy:
+    src: "{{ bitwardenrs_directory }}/env.tmp"
+    dest: "{{ bitwardenrs_directory }}/.env"
+    remote_src: yes
+    mode: u=rw,g=,o=
+  notify: restart bitwardenrs
+
+- name: Create systemd service
+  template:
+    src: systemd.service
+    dest: /lib/systemd/system/bitwardenrs.service
+  register: _bitwardenrs_systemd_service
+  notify: restart bitwardenrs
+
+- name: Reload systemd daemon
+  command: systemctl daemon-reload
+  when: _bitwardenrs_systemd_service.changed
+
+- name: Ensure bitwarden_rs started and enabled
+  service:
+    name: bitwardenrs
+    state: started
+    enabled: yes

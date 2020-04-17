@@ -1,0 +1,40 @@
+_bitwardenrs_build_packages:
+  - build-essential
+  - libssl-dev
+  - pkg-config
+
+_bitwardenrs_admin_settings:
+  - key: ADMIN_TOKEN
+    value: "{{ bitwardenrs_admin_token }}"
+  - key: DISABLE_ADMIN_TOKEN
+    value: "{{ 'true' if bitwardenrs_admin_token_disabled else 'false' }}"
+
+_bitwardenrs_logging_settings:
+  - key: LOG_FILE
+    value: "bitwarden_rs.log"
+  - key: ROCKET_CLI_COLORS
+    value: 'off'
+
+_bitwardenrs_signup_settings:
+  - key: SIGNUPS_ALLOWED
+    value: "{{ 'true' if bitwardenrs_signup else 'false' }}"
+  - key: SIGNUPS_DOMAINS_WHITELIST
+    value: "{{ bitwardenrs_signup_domains|join(',') }}"
+
+_bitwardenrs_smtp_settings:
+  - key: SMTP_HOST
+    value: "{{ bitwardenrs_smtp_host }}"
+  - key: SMTP_FROM
+    value: "{{ bitwardenrs_smtp_from }}"
+  - key: SMTP_FROM_NAME
+    value: "{{ bitwardenrs_smtp_from_name }}"
+  - key: SMTP_PORT
+    value: "{{ bitwardenrs_smtp_port }}"
+  - key: SMTP_SSL
+    value: "{{ bitwardenrs_smtp_ssl }}"
+  - key: SMTP_USERNAME
+    value: "{{ bitwardenrs_smtp_username }}"
+  - key: SMTP_PASSWORD
+    value: "{{ bitwardenrs_smtp_password }}"
+  - key: SMTP_AUTH_MECHANISM
+    value: '"Plain"'

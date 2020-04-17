@@ -1,0 +1,12 @@
+[Unit]
+Description =  Bitwarden_RS (https://github.com/dani-garcia/bitwarden_rs)
+After = network.target network-online.target dbus.service
+Wants = network-online.target
+Requires = dbus.service
+
+[Service]
+WorkingDirectory = {{ bitwardenrs_directory }}
+ExecStart = {{ bitwardenrs_directory }}/bitwarden_rs
+
+[Install]
+WantedBy = multi-user.target

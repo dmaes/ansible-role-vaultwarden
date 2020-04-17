@@ -1,0 +1,6 @@
+- name: Restart bitwardenrs
+  service:
+    name: bitwardenrs
+    state: restarted
+  listen:
+    - restart bitwardenrs
