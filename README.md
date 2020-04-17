@@ -10,21 +10,21 @@ Also, not all configuration can be done via role variables yet.
 ## Requirements
 * Requirements for the [unarchive](https://docs.ansible.com/ansible/latest/modules/unarchive_module.html)-module
 * Requirements for the [package](https://docs.ansible.com/ansible/latest/modules/package_module.html)-module
-* Systemd (option to disable will be added in the future)
+* Systemd (optional)
 * SQLite3
 
 ## Role Variables
 ```yaml
 # Role settings
-bitwardenrs_configure: yes
-bitwardenrs_systemd: yes
+bitwardenrs_configure: yes # Do or do not configure bitwardenrs
+bitwardenrs_systemd: yes # Do or do not setup systemd service
 
 # Installation settings
-bitwardenrs_directory: /opt/bitwarden_rs
-bitwardenrs_version: 1.14.1
-bitwardenrs_webvault_version: 2.13.2
+bitwardenrs_directory: /opt/bitwarden_rs # Where to install
+bitwardenrs_version: 1.14.1 # Version to install
+bitwardenrs_webvault_version: 2.13.2 # Webvault version to install
 
-# Configuration settings
+# Configuration settings (check Bitwarden_RS config file for more information)
 bitwardenrs_admin_token: ''
 bitwardenrs_admin_token_disabled: no
 bitwardenrs_port: 8000
