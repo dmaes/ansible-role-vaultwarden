@@ -1,0 +1,45 @@
+
+# Created by https://www.gitignore.io/api/visualstudiocode,vim,ansible
+# Edit at https://www.gitignore.io/?templates=visualstudiocode,vim,ansible
+
+### Ansible ###
+*.retry
+
+### Vim ###
+# Swap
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+
+# Session
+Session.vim
+Sessionx.vim
+
+# Temporary
+.netrwhist
+*~
+
+# Auto-generated tag files
+tags
+
+# Persistent undo
+[._]*.un~
+
+# Coc configuration directory
+.vim
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
+
+# End of https://www.gitignore.io/api/visualstudiocode,vim,ansible
+
