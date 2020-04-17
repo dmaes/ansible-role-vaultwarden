@@ -15,7 +15,7 @@
 
 - name: Download bitwarden_rs repo
   unarchive:
-    src: "https://github.com/dani-garcia/bitwarden_rs/archive/{{ bitwardenrs_version}}.tar.gz"
+    src: "https://github.com/dani-garcia/bitwarden_rs/archive/{{ bitwardenrs_version }}.tar.gz"
     dest: "{{ bitwardenrs_directory }}"
     creates: "{{ bitwardenrs_directory }}/bitwarden_rs-{{ bitwardenrs_version }}"
     remote_src: yes
@@ -23,7 +23,7 @@
 - name: Compile bitwarden_rs
   command:
     cmd: ~/.cargo/bin/cargo build --features sqlite --release
-    chdir: "{{ bitwardenrs_directory }}/bitwarden_rs-{{ bitwardenrs_version}}"
+    chdir: "{{ bitwardenrs_directory }}/bitwarden_rs-{{ bitwardenrs_version }}"
     creates: "{{ bitwardenrs_directory }}/bitwarden_rs-{{ bitwardenrs_version }}/target/release/bitwarden_rs"
 
 - name: Copy bitwarden_rs executable
