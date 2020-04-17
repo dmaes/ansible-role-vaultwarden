@@ -62,7 +62,7 @@ bitwardenrs_webvault_version: 2.13.2
 ```yaml
 - hosts: servers
   roles:
-      - role: dmaes.rolename
+      - role: dmaes.bitwardenrs
         bitwardenrs_signup: no
 ```
 
