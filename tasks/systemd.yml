@@ -1,0 +1,12 @@
+- name: Create systemd service
+  template:
+    src: systemd.service
+    dest: /lib/systemd/system/bitwardenrs.service
+  register: _bitwardenrs_systemd_service
+  notify: systemd service changed
+
+- name: Ensure bitwarden_rs started and enabled
+  systemd:
+    name: bitwardenrs
+    state: started
+    enabled: yes

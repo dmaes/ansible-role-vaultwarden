@@ -1,6 +1,14 @@
+- name: Reload systemd daemon
+  systemd:
+    daemon_reload: yes
+  listen:
+    - systemd service changed
+
 - name: Restart bitwardenrs
   systemd:
     name: bitwardenrs
     state: restarted
+  when: bitwardenrs_systemd|bool
   listen:
-    - restart bitwardenrs
+    - config changed
+    - systemd service changed

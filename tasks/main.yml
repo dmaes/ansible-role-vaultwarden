@@ -8,3 +8,7 @@
 
 - name: Configure bitwarden_rs
   include_tasks: configure.yml
+
+- name: Configure systemd
+  include_tasks: systemd.yml
+  when: bitwardenrs_systemd|bool

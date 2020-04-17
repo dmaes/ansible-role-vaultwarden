@@ -51,22 +51,4 @@
     dest: "{{ bitwardenrs_directory }}/.env"
     remote_src: yes
     mode: u=rw,g=,o=
-  notify: restart bitwardenrs
-
-- name: Create systemd service
-  template:
-    src: systemd.service
-    dest: /lib/systemd/system/bitwardenrs.service
-  register: _bitwardenrs_systemd_service
-  notify: restart bitwardenrs
-
-- name: Reload systemd daemon
-  systemd:
-    daemon_reload: yes
-  when: _bitwardenrs_systemd_service.changed
-
-- name: Ensure bitwarden_rs started and enabled
-  systemd:
-    name: bitwardenrs
-    state: started
-    enabled: yes
+  notify: config changed

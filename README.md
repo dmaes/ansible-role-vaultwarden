@@ -15,47 +15,28 @@ Also, not all configuration can be done via role variables yet.
 
 ## Role Variables
 ```yaml
-# Admin settings
-## Sets the admin token
-bitwardenrs_admin_token: ''
-## Disables admin token (unsafe, use with external protection (e.g. BasicAuth))
-bitwardenrs_admin_token_disabled: no
+# Role settings
+bitwardenrs_systemd: yes
 
-# Directory to install
+# Installation settings
 bitwardenrs_directory: /opt/bitwarden_rs
-
-# Port to run on
-bitwardenrs_port: 8000
-
-# Sign-up settings
-## Enable sign-up
-bitwardenrs_signup: yes
-## Limit sign-up to list of domains (ignores public sign-up setting)
-bitwardenrs_signup_domains: []
-
-# SMTP settings
-## Enable SMTP
-bitwardenrs_smtp: no
-## SMTP server
-bitwardenrs_smtp_host: "{{ bitwardenrs_domain }}"
-## Mail from this address
-bitwardenrs_smtp_from: "bitwarden-rs@{{ bitwardenrs_domain }}"
-## Mail with this name
-bitwardenrs_smtp_from_name: Bitwarden_RS
-## SMTP server port
-bitwardenrs_smtp_port: 587
-## Use SSL for SMTP
-bitwardenrs_smtp_ssl: yes
-## SMTP auth username
-bitwardenrs_smtp_username: ''
-## SMTP auth password (plain-text)
-bitwardenrs_smtp_password: ''
-
-# Version settings
-## Version to install
 bitwardenrs_version: 1.14.1
-## Webvault version to install
 bitwardenrs_webvault_version: 2.13.2
+
+# Configuration settings
+bitwardenrs_admin_token: ''
+bitwardenrs_admin_token_disabled: no
+bitwardenrs_port: 8000
+bitwardenrs_signup: yes
+bitwardenrs_signup_domains: []
+bitwardenrs_smtp: no
+bitwardenrs_smtp_host: "{{ bitwardenrs_domain }}"
+bitwardenrs_smtp_from: "bitwarden-rs@{{ bitwardenrs_domain }}"
+bitwardenrs_smtp_from_name: Bitwarden_RS
+bitwardenrs_smtp_port: 587
+bitwardenrs_smtp_ssl: yes
+bitwardenrs_smtp_username: ''
+bitwardenrs_smtp_password: ''
 ```
 
 ## Example Playbook
