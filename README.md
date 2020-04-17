@@ -44,9 +44,10 @@ bitwardenrs_smtp_password: ''
 ## Example Playbook
 ```yaml
 - hosts: servers
+  vars:
+    bitwardenrs_configure: no
   roles:
-      - role: dmaes.bitwardenrs
-        bitwardenrs_configure: no
+    - dmaes.bitwardenrs
 ```
 
 ## License
