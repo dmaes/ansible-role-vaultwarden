@@ -3,7 +3,7 @@
     path: "{{ bitwardenrs_directory }}"
     state: directory
 
-- name: Install bitwarden_rs and web-vault
+- name: Install bitwarden_rs (and web-vault)
   include_tasks: install.yml
 
 - name: Configure bitwarden_rs

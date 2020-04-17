@@ -1,6 +1,7 @@
 # Role settings
 bitwardenrs_configure: yes
 bitwardenrs_systemd: yes
+bitwardenrs_webvault: yes
 
 # Installation settings
 bitwardenrs_directory: /opt/bitwarden_rs

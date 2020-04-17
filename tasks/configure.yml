@@ -1,3 +1,10 @@
+- name: Copy env template
+  copy:
+    src: "{{ bitwardenrs_directory }}/bitwarden_rs-{{ bitwardenrs_version }}/.env.template"
+    dest: "{{ bitwardenrs_directory }}/env.tmp"
+    remote_src: yes
+    mode: preserve
+
 - name: Set domain
   lineinfile:
     path: "{{ bitwardenrs_directory }}/env.tmp"

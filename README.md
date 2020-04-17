@@ -18,6 +18,7 @@ Also, not all configuration can be done via role variables yet.
 # Role settings
 bitwardenrs_configure: yes # Do or do not configure bitwardenrs
 bitwardenrs_systemd: yes # Do or do not setup systemd service
+bitwardenrs_webvault: yes # Do or do not install webvault (https://github.com/dani-garcia/bw_web_builds)
 
 # Installation settings
 bitwardenrs_directory: /opt/bitwarden_rs # Where to install
