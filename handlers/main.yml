@@ -1,5 +1,5 @@
 - name: Restart bitwardenrs
-  service:
+  systemd:
     name: bitwardenrs
     state: restarted
   listen:

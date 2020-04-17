@@ -61,11 +61,12 @@
   notify: restart bitwardenrs
 
 - name: Reload systemd daemon
-  command: systemctl daemon-reload
+  systemd:
+    daemon_reload: yes
   when: _bitwardenrs_systemd_service.changed
 
 - name: Ensure bitwarden_rs started and enabled
-  service:
+  systemd:
     name: bitwardenrs
     state: started
     enabled: yes
