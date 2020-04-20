@@ -51,4 +51,4 @@ bitwardenrs_smtp_password: ''
 ```
 
 ## License
-GPL-3.0
+MIT
