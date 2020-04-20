@@ -3,7 +3,7 @@ galaxy_info:
   role_name: bitwardenrs
   description: Builds, installs and configures Bitwarden_RS (https://github.com/dani-garcia/bitwarden_rs) (without Docker)
 
-  license: GPL-3.0-only
+  license: MIT
 
   min_ansible_version: 2.9
 
