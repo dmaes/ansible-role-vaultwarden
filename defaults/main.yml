@@ -5,8 +5,8 @@ bitwardenrs_webvault: yes
 
 # Installation settings
 bitwardenrs_directory: /opt/bitwarden_rs
-bitwardenrs_version: 1.14.1
-bitwardenrs_webvault_version: 2.13.2
+bitwardenrs_version: 1.14.2
+bitwardenrs_webvault_version: 2.13.2b
 
 # Configuration settings
 bitwardenrs_admin_token: ''

@@ -23,8 +23,8 @@ bitwardenrs_webvault: yes # Do or do not install webvault (https://github.com/da
 
 # Installation settings
 bitwardenrs_directory: /opt/bitwarden_rs # Where to install
-bitwardenrs_version: 1.14.1 # Version to install
-bitwardenrs_webvault_version: 2.13.2 # Webvault version to install
+bitwardenrs_version: 1.14.2 # Version to install
+bitwardenrs_webvault_version: 2.13.2b # Webvault version to install
 
 # Configuration settings (check Bitwarden_RS config file for more information)
 bitwardenrs_admin_token: ''
