@@ -1,5 +1,7 @@
 # Bitwardenrs
 
+[![Build Status](https://travis-ci.com/dmaes/ansible-role-bitwardenrs.svg?branch=master)](https://travis-ci.com/dmaes/ansible-role-bitwardenrs)
+
 Builds, installs and configures [Bitwarden_RS](https://github.com/dani-garcia/bitwarden_rs) (without Docker).
 
 Currently, only sqlite3 backend is supported.
