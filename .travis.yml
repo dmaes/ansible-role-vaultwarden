@@ -5,6 +5,9 @@ python: "2.7"
 # Use the new container infrastructure
 sudo: false
 
+env:
+  - ROLE_NAME=bitwardenrs
+
 # Install ansible
 addons:
   apt:
@@ -14,10 +17,14 @@ addons:
 install:
   # Install ansible
   - pip install ansible
-
   # Check ansible version
   - ansible --version
 
+before_script:
+  # Rename project dir to actual role name
+  - cd ../
+  - mv ansible-role-$ROLE_NAME dmaes.$ROLE_NAME
+  - cd dmaes.$ROLE_NAME
   # Create ansible.cfg with correct roles_path
   - printf '[defaults]\nroles_path=../' >ansible.cfg
 
