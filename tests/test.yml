@@ -1,5 +1,7 @@
 ---
 - hosts: localhost
   remote_user: root
+  vars:
+    bitwardenrs_configure: no
   roles:
     - dmaes.bitwardenrs
