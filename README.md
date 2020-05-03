@@ -16,7 +16,8 @@ Also, not all configuration can be done via role variables yet.
 ## Role Variables
 ```yaml
 # Role settings
-bitwardenrs_configure: yes # Do or do not configure bitwardenrs
+bitwardenrs_configure: yes # Do or do not configure bitwardenrs (must specify `bitwardenrs_domain` if set to `yes`)
+bitwardenrs_domain: <domain> # must be specified if `bitwardenrs_configure` is set to `yes` (without `https://`)
 bitwardenrs_systemd: yes # Do or do not setup systemd service
 bitwardenrs_webvault: yes # Do or do not install webvault (https://github.com/dani-garcia/bw_web_builds)
 

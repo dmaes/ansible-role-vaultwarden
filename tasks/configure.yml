@@ -8,7 +8,7 @@
 - name: Set domain
   lineinfile:
     path: "{{ bitwardenrs_directory }}/env.tmp"
-    line: "DOMAIN={{ bitwardenrs_domain }}"
+    line: "DOMAIN=https://{{ bitwardenrs_domain }}"
     regexp: '^DOMAIN='
     insertafter: '^# DOMAIN='
 
