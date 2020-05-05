@@ -26,26 +26,37 @@ Also, not all configuration can be done via role variables yet.
 | `bitwardenrs_webvault_version` | Version of the webvault to install | `2.13.2b` |
 
 ### Configuration settings
-**General settings**
+#### Configuration template
+A configuration template can be specified.
+This file will be templated using Ansible's `template` module.
+When set, configuration by variables will be skipped.
+```yaml
+bitwardenrs_config_template: ''
+```
+
+#### Configuration variables
+If a template is not defined, Bitwarden_RS can be configured using the following available variables:<br>
+
+***General settings***
 | Variable | Description | Default value |
 | --- | --- | --- |
-| `bitwardenrs_configure` | Create configuration file using relevant variables | `true` |
-| `bitwardenrs_domain` | The domain that Bitwarden_RS will be accessed on | `null` |
+| `bitwardenrs_configure` | Create configuration file using variables | `true` |
+| `bitwardenrs_domain` | The domain that Bitwarden_RS will be accessed on | `{{ ansible_fqdn }}` |
 | `bitwardenrs_port` | Port for Bitwarden_RS to listen on | `8000` |
 
-**Admin settings**
+***Admin settings***
 | Variable | Description | Default value |
 | --- | --- | --- |
 | `bitwardenrs_admin_token` | Admin token required to access the admin interface | `''`
 | `bitwardenrs_admin_token_disable` | Disable admin token (use with caution and external auth) | `false` |
 
-**Sign-up settings**
+***Sign-up settings***
 | Variable | Description | Default value |
 | --- | --- | --- |
 | `bitwardenrs_signup` | Allow public sign-up | `true` |
 | `bitwardenrs_signup_domains` | Allow sign-up using an email-address from these domains, even if public sign-up is disabled | `[]` |
 
-**SMTP settings**
+***SMTP settings***
 | Variable | Description | Default value |
 | --- | --- | --- |
 | `bitwardenrs_smtp` | Configure SMTP settings (ignore all others when disabled) | `false` |

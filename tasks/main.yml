@@ -6,9 +6,15 @@
 - name: Install bitwarden_rs (and web-vault)
   include_tasks: install.yml
 
-- name: Configure bitwarden_rs
+- name: Template configuration
+  template:
+    src: "{{ bitwardenrs_config_template }}"
+    dest: "{{ bitwardenrs_directory }}/.env"
+  when: bitwardenrs_config_template|length > 0
+
+- name: Configure Bitwarden_RS
   include_tasks: configure.yml
-  when: bitwardenrs_configure|bool
+  when: (bitwardenrs_configure|bool) and (bitwardenrs_config_template|length == 0)
 
 - name: Configure systemd
   include_tasks: systemd.yml

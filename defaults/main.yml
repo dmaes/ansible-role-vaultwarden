@@ -1,19 +1,25 @@
-# Role settings
-bitwardenrs_configure: yes
-bitwardenrs_systemd: yes
-bitwardenrs_webvault: yes
-
 # Installation settings
 bitwardenrs_directory: /opt/bitwarden_rs
 bitwardenrs_version: 1.14.2
+bitwardenrs_systemd: yes
+bitwardenrs_webvault: yes
 bitwardenrs_webvault_version: 2.13.2b
 
-# Configuration settings
+# Config template
+bitwardenrs_config_tempate: ''
+
+# Configuration variables
+## General settings
+bitwardenrs_configure: yes
+bitwardenrs_domain: "{{ ansible_fqdn }}"
+bitwardenrs_port: 8000
+## Admin settings
 bitwardenrs_admin_token: ''
 bitwardenrs_admin_token_disabled: no
-bitwardenrs_port: 8000
+## Sign-up settings
 bitwardenrs_signup: yes
 bitwardenrs_signup_domains: []
+## SMTP settings
 bitwardenrs_smtp: no
 bitwardenrs_smtp_host: "{{ bitwardenrs_domain }}"
 bitwardenrs_smtp_from: "bitwarden-rs@{{ bitwardenrs_domain }}"
