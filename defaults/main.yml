@@ -11,7 +11,7 @@ bitwardenrs_config_tempate: ''
 # Configuration variables
 ## General settings
 bitwardenrs_configure: yes
-bitwardenrs_domain: "{{ ansible_fqdn }}"
+bitwardenrs_domain: "https://{{ ansible_fqdn }}/"
 bitwardenrs_port: 8000
 ## Admin settings
 bitwardenrs_admin_token: ''
@@ -21,8 +21,8 @@ bitwardenrs_signup: yes
 bitwardenrs_signup_domains: []
 ## SMTP settings
 bitwardenrs_smtp: no
-bitwardenrs_smtp_host: "{{ bitwardenrs_domain }}"
-bitwardenrs_smtp_from: "bitwarden-rs@{{ bitwardenrs_domain }}"
+bitwardenrs_smtp_host: "{{ bitwardenrs_domain|urlsplit('hostname') }}"
+bitwardenrs_smtp_from: "bitwarden-rs@{{ bitwardenrs_domain|urlsplit('hostname') }}"
 bitwardenrs_smtp_from_name: Bitwarden_RS
 bitwardenrs_smtp_port: 587
 bitwardenrs_smtp_ssl: yes

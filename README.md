@@ -41,7 +41,7 @@ If a template is not defined, Bitwarden_RS can be configured using the following
 | Variable | Description | Default value |
 | --- | --- | --- |
 | `bitwardenrs_configure` | Create configuration file using variables | `true` |
-| `bitwardenrs_domain` | The domain that Bitwarden_RS will be accessed on | `{{ ansible_fqdn }}` |
+| `bitwardenrs_domain` | The domain that Bitwarden_RS will be accessed on | `https://{{ ansible_fqdn }}/` |
 | `bitwardenrs_port` | Port for Bitwarden_RS to listen on | `8000` |
 
 ***Admin settings***
@@ -60,8 +60,8 @@ If a template is not defined, Bitwarden_RS can be configured using the following
 | Variable | Description | Default value |
 | --- | --- | --- |
 | `bitwardenrs_smtp` | Configure SMTP settings (ignore all others when disabled) | `false` |
-| `bitwardenrs_smtp_host ` | The SMTP host to connect with | `{{ bitwardenrs_domain }}` |
-| `bitwardenrs_smtp_from ` | The SMTP From-address | `bitwarden-rs@{{ bitwardenrs_domain }}` |
+| `bitwardenrs_smtp_host ` | The SMTP host to connect with | `{{ bitwardenrs_domain|urlsplit('hostname') }}` |
+| `bitwardenrs_smtp_from ` | The SMTP From-address | `bitwarden-rs@{{ bitwardenrs_domain|urlsplit('hostname') }}` |
 | `bitwardenrs_smtp_from_name ` | The SMTP From-name| `Bitwarden_RS` |
 | `bitwardenrs_smtp_port ` | The SMTP port to connect to | `587` |
 | `bitwardenrs_smtp_ssl ` | Use SSL when connecting to the SMTP server | `true` |
