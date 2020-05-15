@@ -1,6 +1,6 @@
 - name: Create systemd service
   template:
-    src: systemd.service
+    src: systemd.service.j2
     dest: /lib/systemd/system/bitwardenrs.service
   register: _bitwardenrs_systemd_service
   notify: systemd service changed

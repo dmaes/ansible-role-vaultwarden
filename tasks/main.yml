@@ -1,3 +1,15 @@
+- name: Ensure bitwardenrs user
+  user:
+    name: "{{ bitwardenrs_user }}"
+    group: "{{ bitwardenrs_user_group }}"
+    home: "{{ bitwardenrs_directory }}"
+    create_home: yes
+    move_home: yes
+    password: '!'
+    system: "{{ bitwardenrs_user_system }}"
+    state: present
+  when: not bitwardenrs_user_external|bool
+
 - name: Ensure bitwardenrs directory
   file:
     path: "{{ bitwardenrs_directory }}"
@@ -16,3 +28,10 @@
 - name: Configure systemd
   include_tasks: systemd.yml
   when: bitwardenrs_systemd|bool
+
+- name: Ensure permissions
+  file:
+    path: "{{ bitwardenrs_directory }}"
+    state: directory
+    owner: "{{ bitwardenrs_user }}"
+    group: "{{ bitwardenrs_user_group }}"

@@ -25,6 +25,14 @@ Also, not all configuration can be done via role variables yet.
 | `bitwardenrs_webvault` | Install the patched webvault | `true` |
 | `bitwardenrs_webvault_version` | Version of the webvault to install | `2.13.2b` |
 
+### Runtime settings
+| Variable | Description | Default value |
+| --- | --- | --- |
+| `bitwardenrs_user` | User to run Bitwarden_RS as | `bitwardenrs` |
+| `bitwardenrs_user_group` | Group of the Bitwarden_RS user | `{{ bitwardenrs_user }}` |
+| `bitwardenrs_user_system` | Bitwarden_RS user should be a system user | `true` |
+| `bitwardenrs_user_external` | Don't or do let this role manage the Bitwarden_RS user. If `true`, above settings will only be used for permission management | `false` |
+
 ### Configuration settings
 #### Configuration template
 A configuration template can be specified.
