@@ -12,7 +12,7 @@ bitwardenrs_user_system: yes
 bitwardenrs_user_external: no
 
 # Config template
-bitwardenrs_config_tempate: ''
+bitwardenrs_config_template: ''
 
 # Configuration variables
 ## General settings

@@ -11,6 +11,7 @@
     dest: "{{ bitwardenrs_directory }}/.env"
     mode: u=rw,go=
   when: _bitwardenrs_config_template|length > 0
+  notify: config changed
 
 - name: Configure systemd
   include_tasks: systemd.yml
@@ -22,3 +23,4 @@
     state: directory
     owner: "{{ bitwardenrs_user }}"
     group: "{{ bitwardenrs_user_group }}"
+    recurse: yes
