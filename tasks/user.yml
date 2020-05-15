@@ -1,0 +1,16 @@
+- name: Ensure bitwardenrs group
+  group:
+    name: "{{ bitwardenrs_user_group }}"
+    system: "{{ bitwardenrs_user_system }}"
+    state: present
+
+- name: Ensure bitwardenrs user
+  user:
+    name: "{{ bitwardenrs_user }}"
+    group: "{{ bitwardenrs_user_group }}"
+    home: "{{ bitwardenrs_directory }}"
+    create_home: yes
+    move_home: yes
+    password: '!'
+    system: "{{ bitwardenrs_user_system }}"
+    state: present

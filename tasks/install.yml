@@ -1,3 +1,8 @@
+- name: Ensure bitwardenrs directory
+  file:
+    path: "{{ bitwardenrs_directory }}"
+    state: directory
+
 - name: Get rustup installer
   get_url:
     url: https://sh.rustup.rs
