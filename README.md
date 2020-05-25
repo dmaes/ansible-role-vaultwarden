@@ -14,6 +14,7 @@ Also, not all configuration can be done via role variables yet.
 * Requirements for the [package](https://docs.ansible.com/ansible/latest/modules/package_module.html)-module
 * Systemd (optional)
 * SQLite3
+* wget or curl
 
 ## Role Variables
 ### Installation settings
