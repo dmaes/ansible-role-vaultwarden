@@ -24,7 +24,7 @@ Also, not all configuration can be done via role variables yet.
 | `bitwardenrs_version` | Which version to install | `1.41.2` |
 | `bitwardenrs_systemd` | Setup systemd service | `true` |
 | `bitwardenrs_webvault` | Install the patched webvault | `true` |
-| `bitwardenrs_webvault_version` | Version of the webvault to install | `2.13.2b` |
+| `bitwardenrs_webvault_version` | Version of the webvault to install | `2.14.0` |
 
 ### Runtime settings
 | Variable | Description | Default value |
