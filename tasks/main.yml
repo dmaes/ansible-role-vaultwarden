@@ -1,3 +1,9 @@
+- include: preflight.yml
+  tags:
+    - bitwardenrs_install
+    - bitwardenrs_configure
+    - bitwardenrs_run
+
 - include: user.yml
   become: yes
   when: not (bitwardenrs_user_external|bool or bitwardenrs_user == 'root')
