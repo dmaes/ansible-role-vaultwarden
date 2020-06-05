@@ -12,7 +12,7 @@ Also, not all configuration can be done via role variables yet.
 ## Requirements
 * Requirements for the [unarchive](https://docs.ansible.com/ansible/latest/modules/unarchive_module.html)-module
 * Requirements for the [package](https://docs.ansible.com/ansible/latest/modules/package_module.html)-module
-* Systemd (optional)
+* Systemd
 * SQLite3
 * wget or curl
 
@@ -21,8 +21,7 @@ Also, not all configuration can be done via role variables yet.
 | Variable | Description | Default value |
 | --- | --- | --- |
 | `bitwardenrs_directory` | Where to install Bitwarden_RS | `/opt/bitwarden_rs` |
-| `bitwardenrs_version` | Which version to install | `1.41.2` |
-| `bitwardenrs_systemd` | Setup systemd service | `true` |
+| `bitwardenrs_version` | Which version to install | `1.15.0` |
 | `bitwardenrs_webvault` | Install the patched webvault | `true` |
 | `bitwardenrs_webvault_version` | Version of the webvault to install | `2.14.0` |
 

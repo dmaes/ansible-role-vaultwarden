@@ -13,6 +13,6 @@
     move_home: yes
     password: '!'
     system: "{{ bitwardenrs_user_system }}"
-    shell: /usr/sbin/nologin
+    shell: /bin/sh
     comment: Bitwarden_RS server,,,
     state: present

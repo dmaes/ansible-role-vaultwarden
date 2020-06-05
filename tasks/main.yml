@@ -1,26 +1,25 @@
-- name: Ensure bitwardenrs user/group
-  include_tasks: user.yml
-  when: not bitwardenrs_user_external|bool
+- include: user.yml
+  become: yes
+  when: not (bitwardenrs_user_external|bool or bitwardenrs_user == 'root')
+  tags:
+    - bitwardenrs_install
 
-- name: Install bitwarden_rs (and web-vault)
-  include_tasks: install.yml
+- include: install.yml
+  become: yes
+  tags:
+    - bitwardenrs_install
 
-- name: Ensure configuration
-  template:
-    src: "{{ _bitwardenrs_config_template }}"
-    dest: "{{ bitwardenrs_directory }}/.env"
-    mode: u=rw,go=
-  when: _bitwardenrs_config_template|length > 0
-  notify: config changed
+- include: configure.yml
+  become: yes
+  tags:
+    - bitwardenrs_configure
 
-- name: Configure systemd
-  include_tasks: systemd.yml
-  when: bitwardenrs_systemd|bool
-
-- name: Ensure permissions
-  file:
-    path: "{{ bitwardenrs_directory }}"
-    state: directory
-    owner: "{{ bitwardenrs_user }}"
-    group: "{{ bitwardenrs_user_group }}"
-    recurse: yes
+- name: Ensure bitwardenrs started and enabled
+  become: yes
+  systemd:
+    name: bitwardenrs
+    state: started
+    enabled: yes
+    daemon_reload: yes
+  tags:
+    - bitwardenrs_run

@@ -1,7 +1,6 @@
 # Installation settings
 bitwardenrs_directory: /opt/bitwarden_rs
 bitwardenrs_version: 1.15.0
-bitwardenrs_systemd: yes
 bitwardenrs_webvault: yes
 bitwardenrs_webvault_version: 2.14.0
 

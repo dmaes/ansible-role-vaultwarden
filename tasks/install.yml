@@ -2,21 +2,25 @@
   file:
     path: "{{ bitwardenrs_directory }}"
     state: directory
-
-- name: Get rustup installer
-  get_url:
-    url: https://sh.rustup.rs
-    dest: ~/rustup.sh
-
-- name: Install rust nightly
-  command:
-    cmd: sh ~/rustup.sh --no-modify-path --default-toolchain nightly -y
-    creates: ~/.cargo/
+    owner: "{{ bitwardenrs_user }}"
+    group: "{{ bitwardenrs_user_group }}"
 
 - name: Install required build-packages
   package:
     name: "{{ _bitwardenrs_build_packages }}"
     state: present
+
+- name: Get rustup installer
+  get_url:
+    url: https://sh.rustup.rs
+    dest: ~{{ bitwardenrs_user }}/rustup.sh
+    owner: "{{ bitwardenrs_user }}"
+    group: "{{ bitwardenrs_user_group }}"
+
+- name: Install rust nightly
+  command: su {{ bitwardenrs_user }} -c '/bin/sh ~{{ bitwardenrs_user }}/rustup.sh --no-modify-path --default-toolchain nightly -y'
+  register: _bitwardenrs_install_rust_nightly
+  changed_when: "'nightly installed' in _bitwardenrs_install_rust_nightly.stdout"
 
 - name: Download bitwarden_rs repo
   unarchive:
@@ -24,10 +28,12 @@
     dest: "{{ bitwardenrs_directory }}"
     creates: "{{ bitwardenrs_directory }}/bitwarden_rs-{{ bitwardenrs_version }}"
     remote_src: yes
+    owner: "{{ bitwardenrs_user }}"
+    group: "{{ bitwardenrs_user_group }}"
 
 - name: Compile bitwarden_rs
   command:
-    cmd: ~/.cargo/bin/cargo build --features sqlite --release
+    cmd: su {{ bitwardenrs_user }} -c '~{{ bitwardenrs_user }}/.cargo/bin/cargo build --features sqlite --release'
     chdir: "{{ bitwardenrs_directory }}/bitwarden_rs-{{ bitwardenrs_version }}"
     creates: "{{ bitwardenrs_directory }}/bitwarden_rs-{{ bitwardenrs_version }}/target/release/bitwarden_rs"
 
@@ -37,10 +43,14 @@
     dest: "{{ bitwardenrs_directory }}/bitwarden_rs"
     remote_src: yes
     mode: preserve
+    owner: "{{ bitwardenrs_user }}"
+    group: "{{ bitwardenrs_user_group }}"
 
 - name: Download patched bitwarden webvault
   unarchive:
     src: https://github.com/dani-garcia/bw_web_builds/releases/download/v{{ bitwardenrs_webvault_version }}/bw_web_v{{ bitwardenrs_webvault_version }}.tar.gz
     dest: "{{ bitwardenrs_directory }}"
     remote_src: yes
+    owner: "{{ bitwardenrs_user }}"
+    group: "{{ bitwardenrs_user_group }}"
   when: bitwardenrs_webvault|bool
