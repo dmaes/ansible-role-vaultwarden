@@ -60,11 +60,11 @@ If a template is not defined, Bitwarden_RS can be configured using the following
 | Variable | Description | Default value |
 | --- | --- | --- |
 | `bitwardenrs_smtp` | Configure SMTP settings (ignore all others when disabled) | `false` |
-| `bitwardenrs_smtp_host ` | The SMTP host to connect with | `{{ bitwardenrs_domain|urlsplit('hostname') }}` |
-| `bitwardenrs_smtp_from ` | The SMTP From-address | `bitwarden-rs@{{ bitwardenrs_domain|urlsplit('hostname') }}` |
+| `bitwardenrs_smtp_host ` | The SMTP host to connect with | `localhost` |
+| `bitwardenrs_smtp_from ` | The SMTP From-address | `bitwardenrs@{{ bitwardenrs_domain|urlsplit('hostname') }}` |
 | `bitwardenrs_smtp_from_name ` | The SMTP From-name| `Bitwarden_RS` |
-| `bitwardenrs_smtp_port ` | The SMTP port to connect to | `587` |
-| `bitwardenrs_smtp_ssl ` | Use SSL when connecting to the SMTP server | `true` |
+| `bitwardenrs_smtp_port ` | The SMTP port to connect to | `25` |
+| `bitwardenrs_smtp_ssl ` | Use SSL when connecting to the SMTP server | `no` |
 | `bitwardenrs_smtp_username ` | The username used to authenticate with the SMTP server | `''` |
 | `bitwardenrs_smtp_password ` | The password used to authenticate with the SMTP server| `''` |
 
