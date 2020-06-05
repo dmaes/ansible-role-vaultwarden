@@ -20,10 +20,10 @@ bitwardenrs_signup: yes
 bitwardenrs_signup_domains: []
 ## SMTP settings
 bitwardenrs_smtp: no
-bitwardenrs_smtp_host: "{{ bitwardenrs_domain|urlsplit('hostname') }}"
-bitwardenrs_smtp_from: "bitwarden-rs@{{ bitwardenrs_domain|urlsplit('hostname') }}"
+bitwardenrs_smtp_host: localhost
+bitwardenrs_smtp_from: bitwardenrs@{{ bitwardenrs_domain|urlsplit('hostname') }}"
 bitwardenrs_smtp_from_name: Bitwarden_RS
-bitwardenrs_smtp_port: 587
-bitwardenrs_smtp_ssl: yes
+bitwardenrs_smtp_port: 25
+bitwardenrs_smtp_ssl: no
 bitwardenrs_smtp_username: ''
 bitwardenrs_smtp_password: ''
