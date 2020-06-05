@@ -8,8 +8,8 @@ Requires = dbus.service
 
 [Service]
 WorkingDirectory = {{ bitwardenrs_directory }}
-User = {{ bitwardenrs_user }}
-Group = {{ bitwardenrs_user_group }}
+User = bitwardenrs
+Group = bitwardenrs
 ExecStart = {{ bitwardenrs_directory }}/bitwarden_rs
 
 [Install]

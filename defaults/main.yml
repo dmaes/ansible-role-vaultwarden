@@ -4,12 +4,6 @@ bitwardenrs_version: 1.15.0
 bitwardenrs_webvault: yes
 bitwardenrs_webvault_version: 2.14.0
 
-# Runtime settings
-bitwardenrs_user: bitwardenrs
-bitwardenrs_user_group: "{{ bitwardenrs_user }}"
-bitwardenrs_user_system: yes
-bitwardenrs_user_external: no
-
 # Config template
 bitwardenrs_config_template: ''
 

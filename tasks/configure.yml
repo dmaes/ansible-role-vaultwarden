@@ -2,8 +2,8 @@
   template:
     src: "{{ _bitwardenrs_config_template }}"
     dest: "{{ bitwardenrs_directory }}/.env"
-    owner: "{{ bitwardenrs_user }}"
-    group: "{{ bitwardenrs_user_group }}"
+    owner: bitwardenrs
+    group: bitwardenrs
     mode: u=rw,go=
   when: _bitwardenrs_config_template|length > 0
   notify: Restart bitwardenrs

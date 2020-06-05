@@ -4,12 +4,6 @@
     - bitwardenrs_configure
     - bitwardenrs_run
 
-- include: user.yml
-  become: yes
-  when: not (bitwardenrs_user_external|bool or bitwardenrs_user == 'root')
-  tags:
-    - bitwardenrs_install
-
 - include: install.yml
   become: yes
   tags:

@@ -1,9 +1,21 @@
-- name: Ensure bitwardenrs directory
-  file:
-    path: "{{ bitwardenrs_directory }}"
-    state: directory
-    owner: "{{ bitwardenrs_user }}"
-    group: "{{ bitwardenrs_user_group }}"
+- name: Ensure bitwardenrs system group
+  group:
+    name: bitwardenrs
+    system: yes
+    state: present
+
+- name: Ensure bitwardenrs system user
+  user:
+    name: bitwardenrs
+    group: bitwardenrs
+    home: "{{ bitwardenrs_directory }}"
+    create_home: yes
+    move_home: yes
+    password: '!'
+    system: yes
+    shell: /bin/sh
+    comment: Bitwarden_RS server,,,
+    state: present
 
 - name: Install required build-packages
   package:
@@ -13,12 +25,12 @@
 - name: Get rustup installer
   get_url:
     url: https://sh.rustup.rs
-    dest: ~{{ bitwardenrs_user }}/rustup.sh
-    owner: "{{ bitwardenrs_user }}"
-    group: "{{ bitwardenrs_user_group }}"
+    dest: ~bitwardenrs/rustup.sh
+    owner: bitwardenrs
+    group: bitwardenrs
 
 - name: Install rust nightly
-  command: su {{ bitwardenrs_user }} -c '/bin/sh ~{{ bitwardenrs_user }}/rustup.sh --no-modify-path --default-toolchain nightly -y'
+  command: su bitwardenrs -c '/bin/sh ~bitwardenrs/rustup.sh --no-modify-path --default-toolchain nightly -y'
   register: _bitwardenrs_install_rust_nightly
   changed_when: "'nightly installed' in _bitwardenrs_install_rust_nightly.stdout"
 
@@ -28,12 +40,12 @@
     dest: "{{ bitwardenrs_directory }}"
     creates: "{{ bitwardenrs_directory }}/bitwarden_rs-{{ bitwardenrs_version }}"
     remote_src: yes
-    owner: "{{ bitwardenrs_user }}"
-    group: "{{ bitwardenrs_user_group }}"
+    owner: bitwardenrs
+    group: bitwardenrs
 
 - name: Compile bitwarden_rs
   command:
-    cmd: su {{ bitwardenrs_user }} -c '~{{ bitwardenrs_user }}/.cargo/bin/cargo build --features sqlite --release'
+    cmd: su bitwardenrs -c '~bitwardenrs/.cargo/bin/cargo build --features sqlite --release'
     chdir: "{{ bitwardenrs_directory }}/bitwarden_rs-{{ bitwardenrs_version }}"
     creates: "{{ bitwardenrs_directory }}/bitwarden_rs-{{ bitwardenrs_version }}/target/release/bitwarden_rs"
 
@@ -43,14 +55,14 @@
     dest: "{{ bitwardenrs_directory }}/bitwarden_rs"
     remote_src: yes
     mode: preserve
-    owner: "{{ bitwardenrs_user }}"
-    group: "{{ bitwardenrs_user_group }}"
+    owner: bitwardenrs
+    group: bitwardenrs
 
 - name: Download patched bitwarden webvault
   unarchive:
     src: https://github.com/dani-garcia/bw_web_builds/releases/download/v{{ bitwardenrs_webvault_version }}/bw_web_v{{ bitwardenrs_webvault_version }}.tar.gz
     dest: "{{ bitwardenrs_directory }}"
     remote_src: yes
-    owner: "{{ bitwardenrs_user }}"
-    group: "{{ bitwardenrs_user_group }}"
+    owner: bitwardenrs
+    group: bitwardenrs
   when: bitwardenrs_webvault|bool
