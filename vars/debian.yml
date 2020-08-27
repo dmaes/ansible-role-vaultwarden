@@ -1,0 +1,4 @@
+_bitwardenrs_build_packages:
+  - build-essential
+  - libssl-dev
+  - pkg-config

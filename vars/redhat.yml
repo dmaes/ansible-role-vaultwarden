@@ -1,0 +1,5 @@
+_bitwardenrs_build_packages:
+  - gcc
+  - openssl-devel
+  - pkg-config
+  - tar

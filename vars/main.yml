@@ -1,8 +1,3 @@
-_bitwardenrs_build_packages:
-  - build-essential
-  - libssl-dev
-  - pkg-config
-
 __bitwardenrs_config_template: "{{ 'env.j2' if bitwardenrs_configure|bool else '' }}"
 _bitwardenrs_config_template: "{{ bitwardenrs_config_template if bitwardenrs_config_template|length > 0 else __bitwardenrs_config_template }}"
 
