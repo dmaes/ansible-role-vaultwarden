@@ -7,7 +7,7 @@ Builds, installs and configures [Bitwarden_RS](https://github.com/dani-garcia/bi
 Currently, only sqlite3 backend is supported.
 Also, not all configuration can be done via role variables yet.
 
-*Only tested on Debian 10*
+*Only tested on Debian 10 and CentOS 8*
 
 ## Requirements
 * Requirements for the [unarchive](https://docs.ansible.com/ansible/latest/modules/unarchive_module.html)-module
