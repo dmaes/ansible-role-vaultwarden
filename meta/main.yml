@@ -11,6 +11,9 @@ galaxy_info:
     - name: Debian
       versions:
         - buster
+    - name: EL
+      versions:
+        - 8
 
   galaxy_tags:
     - password
