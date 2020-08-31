@@ -1,8 +1,8 @@
 # Installation settings
 bitwardenrs_directory: /opt/bitwarden_rs
-bitwardenrs_version: 1.15.0
+bitwardenrs_version: 1.16.3
 bitwardenrs_webvault: yes
-bitwardenrs_webvault_version: 2.14.0
+bitwardenrs_webvault_version: 2.15.1
 
 # Config template
 bitwardenrs_config_template: ''
@@ -21,7 +21,7 @@ bitwardenrs_signup_domains: []
 ## SMTP settings
 bitwardenrs_smtp: no
 bitwardenrs_smtp_host: localhost
-bitwardenrs_smtp_from: bitwardenrs@{{ bitwardenrs_domain|urlsplit('hostname') }}"
+bitwardenrs_smtp_from: bitwardenrs@{{ bitwardenrs_domain|urlsplit('hostname') }}
 bitwardenrs_smtp_from_name: Bitwarden_RS
 bitwardenrs_smtp_port: 25
 bitwardenrs_smtp_ssl: no

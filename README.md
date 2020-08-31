@@ -21,9 +21,9 @@ Also, not all configuration can be done via role variables yet.
 | Variable | Description | Default value |
 | --- | --- | --- |
 | `bitwardenrs_directory` | Where to install Bitwarden_RS | `/opt/bitwarden_rs` |
-| `bitwardenrs_version` | Which version to install | `1.15.0` |
+| `bitwardenrs_version` | Which version to install | `1.16.3` |
 | `bitwardenrs_webvault` | Install the patched webvault | `true` |
-| `bitwardenrs_webvault_version` | Version of the webvault to install | `2.14.0` |
+| `bitwardenrs_webvault_version` | Version of the webvault to install | `2.15.1` |
 
 ### Configuration settings
 #### Configuration template
