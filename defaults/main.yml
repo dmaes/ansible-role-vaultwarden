@@ -2,5 +2,7 @@ bitwardenrs_directory: /opt/bitwarden_rs
 bitwardenrs_version: 1.16.3
 bitwardenrs_webvault: true
 bitwardenrs_webvault_version: 2.16.1
+bitwardenrs_backend: sqlite
+bitwardenrs_force_recompile: false
 bitwardenrs_config:
   DOMAIN: "https://{{ ansible.fqdn }}/"

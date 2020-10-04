@@ -1,4 +1,12 @@
-_bitwardenrs_build_packages:
+__bitwardenrs_build_packages:
   - build-essential
   - libssl-dev
   - pkg-config
+__bitwardenrs_backend_build_packages:
+  sqlite:
+    - sqlite3
+  postgresql: []
+  mysql:
+    - libmariadb-dev-compat
+    - libmariadb-dev
+_bitwardenrs_build_packages: "{{ [__bitwardenrs_build_packages, __bitwardenrs_backend_build_packages[bitwardenrs_backend]] | flatten(1) }}"
