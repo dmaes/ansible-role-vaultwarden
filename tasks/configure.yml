@@ -1,11 +1,10 @@
 - name: Ensure configuration
   template:
-    src: "{{ _bitwardenrs_config_template }}"
+    src: env.j2
     dest: "{{ bitwardenrs_directory }}/.env"
     owner: bitwardenrs
     group: bitwardenrs
     mode: u=rw,go=
-  when: _bitwardenrs_config_template|length > 0
   notify: Restart bitwardenrs
 
 - name: Setup systemd service

@@ -1,7 +1,3 @@
-__bitwardenrs_config_template: "{{ 'env.j2' if bitwardenrs_configure|bool else '' }}"
-_bitwardenrs_config_template: "{{ bitwardenrs_config_template if bitwardenrs_config_template|length > 0 else __bitwardenrs_config_template }}"
-
 _bitwardenrs_ansible_managed: |
-  ANSIBLE MANAGED by dmaes.bitwardenrs
-  template: dmaes.bitwardenrs/templates/env.j2
   https://github.com/dmaes/ansible-role-bitwardenrs
+  template: dmaes.bitwardenrs/templates/env.j2
