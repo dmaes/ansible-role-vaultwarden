@@ -5,7 +5,8 @@ __bitwardenrs_build_packages:
 __bitwardenrs_backend_build_packages:
   sqlite:
     - sqlite3
-  postgresql: []
+  postgresql:
+    - libpq-dev
   mysql:
     - libmariadb-dev-compat
     - libmariadb-dev
