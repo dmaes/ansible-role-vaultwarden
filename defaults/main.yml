@@ -7,3 +7,5 @@ bitwardenrs_force_recompile: false
 bitwardenrs_config:
   DOMAIN: "https://{{ ansible.fqdn }}/"
 bitwardenrs_datadir: "{{ bitwardenrs_directory }}/data"
+bitwardenrs_encryption_key: ""
+bitwardenrs_force_encryption_key: false

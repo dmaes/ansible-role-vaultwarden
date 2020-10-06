@@ -23,6 +23,8 @@ Builds, installs and configures [Bitwarden_RS](https://github.com/dani-garcia/bi
 | `bitwardenrs_force_recompile` | Force recompile binary, (e.g. you switched backends on same server | `false` |
 | `bitwardenrs_config` | Key-value environment variables for the Bitwarden_RS `.env` file | `{ DOMAIN: "https://{{ ansible.fqdn }}/" }` |
 | `bitwardenrs_datadir` | Bitwarden_RS data directory (does not configure, only create and used for e.g. keys) | `{{ bitwardenrs_directory }}/data` |
+| `bitwardenrs_encryption_key` | RSA key to use for encryption (content, not file), empty string to not copy, Bitwarden_RS should generate one if non-existing | `""` |
+| `bitwardenrs_force_encryption_key` | Force changing encryption key if it already exists (DANGEROUS!) | `false` |
 
 ## Example Playbook
 ```yaml
