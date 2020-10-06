@@ -68,3 +68,10 @@
     owner: bitwardenrs
     group: bitwardenrs
   when: bitwardenrs_webvault|bool
+
+- name: Create datadir
+  file:
+    path: "{{ bitwardenrs_datadir }}"
+    state: directory
+    owner: bitwardenrs
+    group: bitwardenrs

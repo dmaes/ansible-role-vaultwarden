@@ -6,3 +6,4 @@ bitwardenrs_backend: sqlite
 bitwardenrs_force_recompile: false
 bitwardenrs_config:
   DOMAIN: "https://{{ ansible.fqdn }}/"
+bitwardenrs_datadir: "{{ bitwardenrs_directory }}/data"
