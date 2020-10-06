@@ -28,6 +28,17 @@
     cmd: openssl rsa -in {{ bitwardenrs_datadir }}/rsa_key.pem -out {{ bitwardenrs_datadir }}/rsa_key.pub.der -outform DER -pubout
   when: __bitwardenrs_copy_encryption_rsa_key.changed
 
+- name: Set permissions on keys in DER format
+  file:
+    path: "{{ bitwardenrs_datadir }}/{{ item }}"
+    owner: bitwardenrs
+    group: bitwardenrs
+    mode: u=rw,go=
+  loop:
+    - rsa_key.der
+    - rsa_key.pub.der
+  when: bitwardenrs_encryption_key|length > 0
+
 - name: Setup systemd service
   template:
     src: systemd.service.j2
