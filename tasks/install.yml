@@ -59,6 +59,7 @@
     mode: preserve
     owner: bitwardenrs
     group: bitwardenrs
+  notify: Restart bitwardenrs
 
 - name: Download patched bitwarden webvault
   unarchive:
