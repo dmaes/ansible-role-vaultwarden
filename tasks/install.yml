@@ -45,7 +45,7 @@
 
 - name: Compile bitwarden_rs
   command:
-    cmd: su bitwardenrs -c '~bitwardenrs/.cargo/bin/cargo build --features {{ bitwardenrs_backend }} --release'
+    cmd: su bitwardenrs -c '~bitwardenrs/.cargo/bin/cargo build --features {{ bitwardenrs_build_backend }} --release'
     chdir: "{{ bitwardenrs_directory }}/bitwarden_rs-{{ bitwardenrs_version }}"
     creates: "{{ omit if bitwardenrs_force_recompile else creates }}"
   vars:
