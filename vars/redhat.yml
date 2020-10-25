@@ -3,3 +3,7 @@ _bitwardenrs_build_packages:
   - openssl-devel
   - pkg-config
   - tar
+  - libpq-devel
+  - mariadb-devel
+  - mariadb-libs
+  - sqlite-devel 
