@@ -18,26 +18,14 @@
   register: __bitwardenrs_copy_encryption_rsa_key
   when: bitwardenrs_encryption_key|length > 0
 
-- name: Create DER privkey
-  command:
-    cmd: openssl rsa -in {{ bitwardenrs_datadir }}/rsa_key.pem -out {{ bitwardenrs_datadir }}/rsa_key.der -outform DER
-  when: __bitwardenrs_copy_encryption_rsa_key.changed
-
-- name: Create DER pubkey
-  command:
-    cmd: openssl rsa -in {{ bitwardenrs_datadir }}/rsa_key.pem -out {{ bitwardenrs_datadir }}/rsa_key.pub.der -outform DER -pubout
-  when: __bitwardenrs_copy_encryption_rsa_key.changed
-
-- name: Set permissions on keys in DER format
+- name: Remove old keys in DER format
   file:
     path: "{{ bitwardenrs_datadir }}/{{ item }}"
-    owner: bitwardenrs
-    group: bitwardenrs
-    mode: u=rw,go=
+    state: absent
   loop:
     - rsa_key.der
     - rsa_key.pub.der
-  when: bitwardenrs_encryption_key|length > 0
+  when: __bitwardenrs_copy_encryption_rsa_key.changed
 
 - name: Setup systemd service
   template:
