@@ -32,3 +32,4 @@
     src: systemd.service.j2
     dest: /lib/systemd/system/bitwardenrs.service
   notify: Restart bitwardenrs
+  when: ansible_service_mgr == 'systemd'

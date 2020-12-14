@@ -1,4 +1,0 @@
-- name: Assert usage of systemd as an init system
-  assert:
-    that: ansible_service_mgr == 'systemd'
-    msg: "This role only works with systemd"
