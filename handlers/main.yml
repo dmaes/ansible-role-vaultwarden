@@ -4,4 +4,4 @@
     name: bitwardenrs
     state: restarted
     daemon_reload: yes
-  when: ansible_service_mgr == 'systemd'
+  when: bitwardenrs_systemd

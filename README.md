@@ -25,6 +25,7 @@ Builds, installs and configures [Bitwarden_RS](https://github.com/dani-garcia/bi
 | `bitwardenrs_datadir` | Bitwarden_RS data directory (does not configure, only create and used for e.g. keys) | `{{ bitwardenrs_directory }}/data` |
 | `bitwardenrs_encryption_key` | RSA key to use for encryption (content, not file), empty string to not copy, Bitwarden_RS should generate one if non-existing | `""` |
 | `bitwardenrs_force_encryption_key` | Force changing encryption key if it already exists (DANGEROUS!) | `false` |
+| `bitwardenrs_systemd` | Manage systemd service | `{{ ansible_service_mgr == 'systemd' }}` |
 *(\*)Starting from `bitwardenrs_version: 1.17.0`: defaults to `sqlite,mysql,postgresql`, before: defaults to `sqlite`*
 
 ## Example Playbook

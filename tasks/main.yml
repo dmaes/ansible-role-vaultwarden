@@ -34,5 +34,6 @@
     state: started
     enabled: yes
     daemon_reload: yes
+  when: bitwardenrs_systemd
   tags:
     - bitwardenrs_run

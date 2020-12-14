@@ -9,3 +9,4 @@ bitwardenrs_config:
 bitwardenrs_datadir: "{{ bitwardenrs_directory }}/data"
 bitwardenrs_encryption_key: ""
 bitwardenrs_force_encryption_key: false
+bitwardenrs_systemd: "{{ ansible_service_mgr == 'systemd' }}"
