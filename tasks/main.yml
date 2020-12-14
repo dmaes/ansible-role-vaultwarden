@@ -11,12 +11,6 @@
     - bitwardenrs_configure
     - bitwardenrs_run
 
-- include: preflight.yml
-  tags:
-    - bitwardenrs_install
-    - bitwardenrs_configure
-    - bitwardenrs_run
-
 - include: install.yml
   become: yes
   tags:
