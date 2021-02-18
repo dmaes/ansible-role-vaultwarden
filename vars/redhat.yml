@@ -5,5 +5,5 @@ _bitwardenrs_build_packages:
   - tar
   - libpq-devel
   - mariadb-devel
-  - mariadb-libs
+  - mysql-libs
   - sqlite-devel 
