@@ -40,6 +40,7 @@ Builds, installs and configures [Bitwarden_RS](https://github.com/dani-garcia/bi
       $ANSIBLE_VAULT;1.1;AES256
       ...
     bitwardenrs_config:
+      DOMAIN: "https://example.com/"
       ADMIN_TOKEN: "{{ admin_token }}"
       SIGNUPS_ALLOWED: 'false'
       SIGNUPS_VERIFY: 'true'
