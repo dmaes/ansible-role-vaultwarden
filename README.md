@@ -42,6 +42,7 @@ Builds, installs and configures [Bitwarden_RS](https://github.com/dani-garcia/bi
     bitwardenrs_config:
       DOMAIN: "https://example.com/"
       ADMIN_TOKEN: "{{ admin_token }}"
+      DATABASE_URL: "postgresql:///bitwardenrs?host=/run/postgresql/"
       SIGNUPS_ALLOWED: 'false'
       SIGNUPS_VERIFY: 'true'
       SIGNUPS_DOMAINS_WHITELIST: 'example.com'
