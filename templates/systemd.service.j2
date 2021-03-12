@@ -8,6 +8,7 @@ Requires = dbus.service
 
 [Service]
 WorkingDirectory = {{ bitwardenrs_directory }}
+EnvironmentFile={{ bitwardenrs_directory }}/.env
 User = bitwardenrs
 Group = bitwardenrs
 ExecStart = {{ bitwardenrs_directory }}/bitwarden_rs
