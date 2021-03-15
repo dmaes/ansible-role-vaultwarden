@@ -31,6 +31,25 @@ Builds, installs and configures [Bitwarden_RS](https://github.com/dani-garcia/bi
 ## Example Playbook
 ```yaml
 - hosts: servers
+-   vars:
+    bitwardenrs_configure: yes
+    bitwardenrs_domain: https://bitwarden.example.com/
+    bitwardenrs_port: "443"
+    bitwardenrs_build_backend: "sqlite,postgresql"
+    admin_token: !vault | 
+      $ANSIBLE_VAULT;1.1;AES256
+      ...
+    bitwardenrs_config:
+      DOMAIN: "https://example.com/"
+      ADMIN_TOKEN: "{{ admin_token }}"
+      DATABASE_URL: "postgresql:///bitwardenrs?host=/run/postgresql/"
+      SIGNUPS_ALLOWED: 'false'
+      SIGNUPS_VERIFY: 'true'
+      SIGNUPS_DOMAINS_WHITELIST: 'example.com'
+      INVITATIONS_ALLOWED: 'true'
+      SMTP_HOST: 'mail.example.com'
+      SMTP_FROM: 'bitwarden@example.com'
+      SMTP_FROM_NAME: 'bitwarden'
   roles:
     - dmaes.bitwardenrs
 ```
