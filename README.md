@@ -31,7 +31,7 @@ Builds, installs and configures [Bitwarden_RS](https://github.com/dani-garcia/bi
 ## Example Playbook
 ```yaml
 - hosts: servers
--   vars:
+  vars:
     bitwardenrs_configure: yes
     bitwardenrs_domain: https://bitwarden.example.com/
     bitwardenrs_port: "443"
