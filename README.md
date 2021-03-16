@@ -10,6 +10,7 @@ Builds, installs and configures [Bitwarden_RS](https://github.com/dani-garcia/bi
 * Requirements for the [unarchive](https://docs.ansible.com/ansible/latest/modules/unarchive_module.html)-module
 * Requirements for the [package](https://docs.ansible.com/ansible/latest/modules/package_module.html)-module
 * wget or curl
+* jinja => v2.11 
 * Systemd (optional)
 
 ## Role Variables
