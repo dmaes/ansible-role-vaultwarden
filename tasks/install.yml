@@ -34,27 +34,27 @@
   register: _bitwardenrs_install_rust_nightly
   changed_when: "'nightly installed' in _bitwardenrs_install_rust_nightly.stdout"
 
-- name: Download bitwarden_rs repo
+- name: Download vaultwarden repo
   unarchive:
-    src: "https://github.com/dani-garcia/bitwarden_rs/archive/{{ bitwardenrs_version }}.tar.gz"
+    src: "https://github.com/dani-garcia/vaultwarden/archive/{{ bitwardenrs_version }}.tar.gz"
     dest: "{{ bitwardenrs_directory }}"
-    creates: "{{ bitwardenrs_directory }}/bitwarden_rs-{{ bitwardenrs_version }}"
+    creates: "{{ bitwardenrs_directory }}/vaultwarden-{{ bitwardenrs_version }}"
     remote_src: yes
     owner: bitwardenrs
     group: bitwardenrs
 
-- name: Compile bitwarden_rs
+- name: Compile vaultwarden
   command:
     cmd: su bitwardenrs -c '~bitwardenrs/.cargo/bin/cargo build --features {{ bitwardenrs_build_backend }} --release'
-    chdir: "{{ bitwardenrs_directory }}/bitwarden_rs-{{ bitwardenrs_version }}"
+    chdir: "{{ bitwardenrs_directory }}/vaultwarden-{{ bitwardenrs_version }}"
     creates: "{{ omit if bitwardenrs_force_recompile else creates }}"
   vars:
-    creates: "{{ bitwardenrs_directory }}/bitwarden_rs-{{ bitwardenrs_version }}/target/release/bitwarden_rs"
+    creates: "{{ bitwardenrs_directory }}/vaultwarden-{{ bitwardenrs_version }}/target/release/vaultwarden"
 
-- name: Copy bitwarden_rs executable
+- name: Copy vaultwarden executable
   copy:
-    src: "{{ bitwardenrs_directory }}/bitwarden_rs-{{ bitwardenrs_version }}/target/release/bitwarden_rs"
-    dest: "{{ bitwardenrs_directory }}/bitwarden_rs"
+    src: "{{ bitwardenrs_directory }}/vaultwarden-{{ bitwardenrs_version }}/target/release/vaultwarden"
+    dest: "{{ bitwardenrs_directory }}/vaultwarden"
     remote_src: yes
     mode: preserve
     owner: bitwardenrs
