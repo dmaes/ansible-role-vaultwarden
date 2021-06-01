@@ -2,7 +2,7 @@
 
 #### ⚠️**IMPORTANT**⚠️: This role was previously known as `dmaes.bitwardenrs`
 Since the Bitwarden_RS project changed names to Vaultwarden, so did this role (see #12 for more info).
-Force this change, we changed everything from `bitwardenrs` to `vaultwarden` (variables used in the ansible code, but also datadir, user, systemd service, etc.)
+Force this change, we changed everything from `bitwardenrs` to `vaultwarden` (variables used in the ansible code, but also directories, user, systemd service, etc.)
 When making the switch:
 * Stop old `bitwarden_rs` service
 * Make a backup of both files and database for good measure
