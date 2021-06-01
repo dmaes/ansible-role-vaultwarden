@@ -1,7 +1,7 @@
 galaxy_info:
   author: dmaes
-  role_name: bitwardenrs
-  description: Builds, installs and configures Bitwarden_RS (https://github.com/dani-garcia/bitwarden_rs) (without Docker)
+  role_name: vaultwarden
+  description: Builds, installs and configures Vaultwarden (https://github.com/dani-garcia/vaultwarden) (without Docker)
 
   license: MIT
 
@@ -18,7 +18,7 @@ galaxy_info:
   galaxy_tags:
     - password
     - security
-    - bitwardenrs
+    - vaultwarden
 
 dependencies: []
   

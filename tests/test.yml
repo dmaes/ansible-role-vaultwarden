@@ -2,6 +2,6 @@
 - hosts: localhost
   remote_user: root
   vars:
-    bitwardenrs_configure: no
+   vaultwarden_configure: no
   roles:
-    - dmaes.bitwardenrs
+    - dmaes.vaultwarden

@@ -1,78 +1,78 @@
-- name: Ensure bitwardenrs system group
+- name: Ensure vaultwarden system group
   group:
-    name: bitwardenrs
+    name: vaultwarden
     system: yes
     state: present
 
-- name: Ensure bitwardenrs system user
+- name: Ensure vaultwarden system user
   user:
-    name: bitwardenrs
-    group: bitwardenrs
-    home: "{{ bitwardenrs_directory }}"
+    name: vaultwarden
+    group: vaultwarden
+    home: "{{ vaultwarden_directory }}"
     create_home: yes
     move_home: yes
     password: '!'
     system: yes
     shell: /bin/sh
-    comment: Bitwarden_RS server,,,
+    comment: Vaultwarden server,,,
     state: present
 
 - name: Install required build-packages
   package:
-    name: "{{ _bitwardenrs_build_packages }}"
+    name: "{{ _vaultwarden_build_packages }}"
     state: present
 
 - name: Get rustup installer
   get_url:
     url: https://sh.rustup.rs
-    dest: ~bitwardenrs/rustup.sh
-    owner: bitwardenrs
-    group: bitwardenrs
+    dest: ~vaultwarden/rustup.sh
+    owner: vaultwarden
+    group: vaultwarden
 
 - name: Install rust nightly
-  command: su bitwardenrs -c '/bin/sh ~bitwardenrs/rustup.sh --no-modify-path --default-toolchain nightly -y'
-  register: _bitwardenrs_install_rust_nightly
-  changed_when: "'nightly installed' in _bitwardenrs_install_rust_nightly.stdout"
+  command: su vaultwarden -c '/bin/sh ~vaultwarden/rustup.sh --no-modify-path --default-toolchain nightly -y'
+  register: _vaultwarden_install_rust_nightly
+  changed_when: "'nightly installed' in _vaultwarden_install_rust_nightly.stdout"
 
 - name: Download vaultwarden repo
   unarchive:
-    src: "https://github.com/dani-garcia/vaultwarden/archive/{{ bitwardenrs_version }}.tar.gz"
-    dest: "{{ bitwardenrs_directory }}"
-    creates: "{{ bitwardenrs_directory }}/vaultwarden-{{ bitwardenrs_version }}"
+    src: "https://github.com/dani-garcia/vaultwarden/archive/{{ vaultwarden_version }}.tar.gz"
+    dest: "{{ vaultwarden_directory }}"
+    creates: "{{ vaultwarden_directory }}/vaultwarden-{{ vaultwarden_version }}"
     remote_src: yes
-    owner: bitwardenrs
-    group: bitwardenrs
+    owner: vaultwarden
+    group: vaultwarden
 
 - name: Compile vaultwarden
   command:
-    cmd: su bitwardenrs -c '~bitwardenrs/.cargo/bin/cargo build --features {{ bitwardenrs_build_backend }} --release'
-    chdir: "{{ bitwardenrs_directory }}/vaultwarden-{{ bitwardenrs_version }}"
-    creates: "{{ omit if bitwardenrs_force_recompile else creates }}"
+    cmd: su vaultwarden -c '~vaultwarden/.cargo/bin/cargo build --features {{ vaultwarden_build_backend }} --release'
+    chdir: "{{ vaultwarden_directory }}/vaultwarden-{{ vaultwarden_version }}"
+    creates: "{{ omit if vaultwarden_force_recompile else creates }}"
   vars:
-    creates: "{{ bitwardenrs_directory }}/vaultwarden-{{ bitwardenrs_version }}/target/release/vaultwarden"
+    creates: "{{ vaultwarden_directory }}/vaultwarden-{{ vaultwarden_version }}/target/release/vaultwarden"
 
 - name: Copy vaultwarden executable
   copy:
-    src: "{{ bitwardenrs_directory }}/vaultwarden-{{ bitwardenrs_version }}/target/release/vaultwarden"
-    dest: "{{ bitwardenrs_directory }}/vaultwarden"
+    src: "{{ vaultwarden_directory }}/vaultwarden-{{ vaultwarden_version }}/target/release/vaultwarden"
+    dest: "{{ vaultwarden_directory }}/vaultwarden"
     remote_src: yes
     mode: preserve
-    owner: bitwardenrs
-    group: bitwardenrs
-  notify: Restart bitwardenrs
+    owner: vaultwarden
+    group: vaultwarden
+  notify: Restart vaultwarden
 
-- name: Download patched bitwarden webvault
+- name: Download patched vaultwarden webvault
   unarchive:
-    src: https://github.com/dani-garcia/bw_web_builds/releases/download/v{{ bitwardenrs_webvault_version }}/bw_web_v{{ bitwardenrs_webvault_version }}.tar.gz
-    dest: "{{ bitwardenrs_directory }}"
+    src: https://github.com/dani-garcia/bw_web_builds/releases/download/v{{ vaultwarden_webvault_version }}/bw_web_v{{ vaultwarden_webvault_version }}.tar.gz
+    dest: "{{ vaultwarden_directory }}"
     remote_src: yes
-    owner: bitwardenrs
-    group: bitwardenrs
-  when: bitwardenrs_webvault|bool
+    owner: vaultwarden
+    group: vaultwarden
+  when: vaultwarden_webvault|bool
 
 - name: Create datadir
   file:
-    path: "{{ bitwardenrs_datadir }}"
+    path: "{{ vaultwarden_datadir }}"
     state: directory
-    owner: bitwardenrs
-    group: bitwardenrs
+    owner: vaultwarden
+    group: vaultwarden

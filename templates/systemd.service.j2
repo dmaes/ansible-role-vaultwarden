@@ -1,4 +1,4 @@
-{{ ansible_managed|default(_bitwardenrs_ansible_managed)|comment }}
+{{ ansible_managed|default(_vaultwarden_ansible_managed)|comment }}
 
 [Unit]
 Description =  VaultWarden (https://github.com/dani-garcia/vaultwarden)
@@ -7,11 +7,11 @@ Wants = network-online.target
 Requires = dbus.service
 
 [Service]
-WorkingDirectory = {{ bitwardenrs_directory }}
-EnvironmentFile={{ bitwardenrs_directory }}/.env
-User = bitwardenrs
-Group = bitwardenrs
-ExecStart = {{ bitwardenrs_directory }}/vaultwarden
+WorkingDirectory = {{ vaultwarden_directory }}
+EnvironmentFile={{ vaultwarden_directory }}/.env
+User = vaultwarden
+Group = vaultwarden
+ExecStart = {{ vaultwarden_directory }}/vaultwarden
 
 [Install]
 WantedBy = multi-user.target

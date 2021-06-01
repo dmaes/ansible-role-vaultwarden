@@ -1,12 +1,12 @@
-bitwardenrs_directory: /opt/bitwarden_rs
-bitwardenrs_version: 1.17.0
-bitwardenrs_webvault: true
-bitwardenrs_webvault_version: 2.16.1
-bitwardenrs_build_backend: "{{ 'sqlite,mysql,postgresql' if bitwardenrs_version is version('1.17.0', '>=') else 'sqlite' }}"
-bitwardenrs_force_recompile: false
-bitwardenrs_config:
-  DOMAIN: "https://{{ ansible_fqdn }}/"
-bitwardenrs_datadir: "{{ bitwardenrs_directory }}/data"
-bitwardenrs_encryption_key: ""
-bitwardenrs_force_encryption_key: false
-bitwardenrs_systemd: "{{ ansible_service_mgr == 'systemd' }}"
+vaultwarden_directory: /opt/vaultwarden
+vaultwarden_version: 1.17.0
+vaultwarden_webvault: true
+vaultwarden_webvault_version: 2.16.1
+vaultwarden_build_backend: "{{ 'sqlite,mysql,postgresql' if vaultwarden_version is version('1.17.0', '>=') else 'sqlite' }}"
+vaultwarden_force_recompile: false
+vaultwarden_config:
+  DOMAIN: https://{{ ansible_fqdn }}/"
+vaultwarden_datadir: "{{ vaultwarden_directory }}/data"
+vaultwarden_encryption_key: ""
+vaultwarden_force_encryption_key: false
+vaultwarden_systemd: "{{ ansible_service_mgr == 'systemd' }}"

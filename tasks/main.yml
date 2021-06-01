@@ -7,27 +7,27 @@
     - "{{ ansible_distribution | lower }}.yml"
     - "{{ ansible_os_family | lower }}.yml"
   tags:
-    - bitwardenrs_install
-    - bitwardenrs_configure
-    - bitwardenrs_run
+    - vaultwarden_install
+    - vaultwarden_configure
+    - vaultwarden_run
 
 - include: install.yml
   become: yes
   tags:
-    - bitwardenrs_install
+    - vaultwarden_install
 
 - include: configure.yml
   become: yes
   tags:
-    - bitwardenrs_configure
+    - vaultwarden_configure
 
-- name: Ensure bitwardenrs started and enabled
+- name: Ensure vaultwarden started and enabled
   become: yes
   systemd:
-    name: bitwardenrs
+    name: vaultwarden
     state: started
     enabled: yes
     daemon_reload: yes
-  when: bitwardenrs_systemd
+  when: vaultwarden_systemd
   tags:
-    - bitwardenrs_run
+    - vaultwarden_run
