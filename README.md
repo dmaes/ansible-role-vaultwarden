@@ -1,5 +1,18 @@
 # Vaultwarden
 
+#### ⚠️**IMPORTANT**⚠️: This role was previously known as `dmaes.bitwardenrs`
+Since the Bitwarden_RS project changed names to Vaultwarden, so did this role (see #12 for more info).
+Force this change, we changed everything from `bitwardenrs` to `vaultwarden` (variables used in the ansible code, but also datadir, user, systemd service, etc.)
+When making the switch:
+* Stop old `bitwarden_rs` service
+* Make a backup of both files and database for good measure
+* Update your ansible code to work with new role
+* Either point `vaultwarden_directory` to the old directory, or move stuff to the new default (`/opt/vaultwarden`). Also pay attention to `vaultwarden_datadir` if using a custom one.
+* Your database should not need any changes and continue working
+* Run ansible, this will create everything under the new name (user and service, not directory)
+* Cleanup old user, service (and possibly (data)directory)
+
+
 [![Build Status](https://travis-ci.com/dmaes/ansible-role-vaultwarden.svg?branch=master)](https://travis-ci.com/dmaes/ansible-role-vaultwarden)
 
 Builds, installs and configures [Vaultwarden](https://github.com/dani-garcia/vaultwarden) (without Docker).
