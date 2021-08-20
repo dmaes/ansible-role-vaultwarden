@@ -8,7 +8,11 @@ When making the switch:
 * Make a backup of both files and database for good measure
 * Update your ansible code to work with new role
 * Either point `vaultwarden_directory` to the old directory, or move stuff to the new default (`/opt/vaultwarden`). Also pay attention to `vaultwarden_datadir` if using a custom one.
-* Your database should not need any changes and continue working
+* The new vaultwarden user should get the same rights on the database as your previous bitwardenrs user 
+  * for postgres:
+     * su - postgres
+     * psql
+     * `postgres-# GRANT bitwardenrs TO vaultwarden;`
 * Run ansible, this will create everything under the new name (user and service, not directory)
 * Cleanup old user, service (and possibly (data)directory)
 
