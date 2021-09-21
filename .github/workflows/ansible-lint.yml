@@ -13,10 +13,10 @@ jobs:
     - name: Lint Ansible Playbook
       # replace "master" with any valid ref
       uses: ansible/ansible-lint-action@master
-      with: |
-        */*.yml
-      targets:
-      override-deps: |
+      with: 
+        targets: |
+          */*.yml
+        override-deps: |
           ansible==2.9
           ansible-lint==4.2.0
-      args: "-w '' -x ''"
+        args: "-w '' -x ''"
