@@ -6,4 +6,4 @@ _vaultwarden_build_packages:
   - libpq-devel
   - mariadb-devel
   - mysql-libs
-  - sqlite-devel 
+  - sqlite-devel

@@ -17,6 +17,14 @@
     comment: Vaultwarden server,,,
     state: present
 
+- name: Ensure vaultwarden directory is owned by vaultwarden user
+  ansible.builtin.file:
+    path: "{{ vaultwarden_directory }}"
+    state: directory
+    recurse: yes
+    owner: vaultwarden
+    group: vaultwarden
+
 - name: Install required build-packages
   package:
     name: "{{ _vaultwarden_build_packages }}"
