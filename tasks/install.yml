@@ -24,7 +24,7 @@
     recurse: yes
     owner: vaultwarden
     group: vaultwarden
-    
+
 - name: Install required build-packages
   package:
     name: "{{ _vaultwarden_build_packages }}"
