@@ -51,7 +51,6 @@ Builds, installs and configures [Vaultwarden](https://github.com/dani-garcia/vau
 - hosts: servers
   vars:
     vaultwarden_configure: yes
-    vaultwarden_domain: https://vaultwarden.example.com/
     vaultwarden_port: "443"
     vaultwarden_build_backend: "sqlite,postgresql"
     admin_token: !vault | 
@@ -59,6 +58,7 @@ Builds, installs and configures [Vaultwarden](https://github.com/dani-garcia/vau
       ...
     vaultwarden_config:
       DOMAIN: "https://example.com/"
+      DOMAIN_PATH: "vaultwarden"  # results in a domain of https://example.com/vaultwarden/
       ADMIN_TOKEN: "{{ admin_token }}"
       DATABASE_URL: "postgresql:///vaultwarden?host=/run/postgresql/"
       SIGNUPS_ALLOWED: 'false'
