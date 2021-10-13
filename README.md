@@ -58,7 +58,7 @@ Builds, installs and configures [Vaultwarden](https://github.com/dani-garcia/vau
       ...
     vaultwarden_config:
       DOMAIN: "https://example.com/"
-      DOMAIN_PATH: "vaultwarden"  # results in a domain of https://example.com/vaultwarden/
+      DOMAIN_PATH: "/vaultwarden"  # results in a domain of https://example.com/vaultwarden/, needs to start with a '/'
       ADMIN_TOKEN: "{{ admin_token }}"
       DATABASE_URL: "postgresql:///vaultwarden?host=/run/postgresql/"
       SIGNUPS_ALLOWED: 'false'
