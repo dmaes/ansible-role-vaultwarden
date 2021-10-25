@@ -1,6 +1,6 @@
 # Vaultwarden
 
-#### ⚠️**IMPORTANT**⚠️: This role was previously known as `dmaes.bitwardenrs`
+#### ⚠️**IMPORTANT**⚠️: This role was previously known as `dmaes.bitwardenrs` and `dmaes.vaultwarden`
 Since the Bitwarden_RS project changed names to Vaultwarden, so did this role (see #12 for more info).
 Force this change, we changed everything from `bitwardenrs` to `vaultwarden` (variables used in the ansible code, but also directories, user, systemd service, etc.)
 When making the switch:
